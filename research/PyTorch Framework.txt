@@ -1,0 +1,89 @@
+PyTorch Framework
+
+├── Core Components
+│   ├── torch (tensors, operations, math)
+│   ├── torch.autograd (automatic differentiation)
+│   ├── torch.nn (neural network layers, losses)
+│   ├── torch.optim (optimization algorithms)
+│   ├── torch.utils (data utilities, serialization)
+│
+├── Auxiliary Libraries
+│   ├── torchvision (computer vision)                                                    
+│   ├── torchaudio (audio processing)
+│   ├── torchtext (text processing)
+│   ├── torch.distributed (distributed training)
+│   ├── torch.fx (graph-based transformations)
+│
+├── Debugging and Profiling
+│   ├── torch.profiler (performance analysis)
+│   ├── torch.autograd.detect_anomaly (gradient debugging)
+│
+├── Deployment Tools
+│   ├── torch.jit (TorchScript for deployment)
+│   ├── torchserve (model serving)
+│
+├── Extended Ecosystem
+│   ├── PyTorch Lightning
+│   ├── Hugging Face Transformers
+│   ├── ONNX
+
+
+
+torchvision/
+    __init__.py      # Marks it as a package
+    transforms.py    # Module for data transformations
+    models.py        # Module for pretrained models
+    datasets.py      # Module for dataset handling
+
+
+
+
+
+numpy/
+├── __init__.py          # Initializes the NumPy package
+├── core/                # Core functionality (array operations, dtypes)
+│   ├── __init__.py
+│   ├── numeric.py       # Numerical operations
+│   ├── multiarray.py    # Core array object and methods
+│   └── umath.py         # Universal functions (e.g., sin, exp)
+├── linalg/              # Linear algebra operations
+│   ├── __init__.py
+│   ├── lapack_lite.py   # Interface to LAPACK (linear algebra routines)
+│   └── functions.py     # High-level linear algebra functions
+├── fft/                 # Fast Fourier Transform (FFT) operations
+│   ├── __init__.py
+│   ├── fftpack.py
+│   └── helper.py
+├── random/              # Random number generation
+│   ├── __init__.py
+│   ├── bit_generator.py # Random number generators
+│   └── distributions.py # Probability distributions
+├── testing/             # Testing utilities for developers
+│   ├── __init__.py
+│   ├── pytest_plugin.py
+│   └── tools.py
+├── ma/                  # Masked arrays for handling missing data
+│   ├── __init__.py
+│   ├── core.py
+│   └── extras.py
+└── version.py           # NumPy version information
+
+
+MATH library
+
+Structure of the math Library
+The math library is a single file in Python's standard library, implemented as a compiled module (written in C for performance). You interact with it in Python, but under the hood, it's part of the compiled Python environment.
+
+Location: The math module is part of Python's standard library and is typically found in the Python installation directory.
+
+math.c     # C source code for the math library (compiled into a binary)
+math.py    # Python wrapper for compatibility (optional)
+
+
+A library is a collection of reusable code that provides specific functionality. The concept of a library being implemented as either a MODULE or a PACKAGE is a general software development concept, not just limited to Python.
+
+
+
+
+
+

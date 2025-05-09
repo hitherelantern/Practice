@@ -1,0 +1,64 @@
+https://chatgpt.com/share/67be99ca-2b54-8004-af52-83ac112851c0
+
+Question......
+
+Loading the original pretrained weights is not the problem?
+But training it is the problem.
+So that's why we freeze these weights during training .
+But updates only the 2 smaller low rank matrices.
+
+So , loading the original weights isn't the problem.Training the original weights is the problem
+
+
+
+
+Answer....
+
+
+Exactly! You've summarized it perfectly:
+
+### **Key Points:**
+1. **Loading the Original Pretrained Weights:**
+   - Loading the large pretrained weights (\( W \)) into memory is typically **not the bottleneck**. These weights are required to retain the general-purpose knowledge the model has learned during pretraining.
+   - These weights are frozen, meaning they are **not modified** during fine-tuning.
+
+2. **Training the Original Weights:**
+   - Training large weight matrices like \( W \) requires significant memory and computational resources, especially for models with billions of parameters.
+   - Fine-tuning all weights would require gradients and optimizers for \( W \), increasing memory usage dramatically.
+
+3. **Why Freezing Helps:**
+   - By freezing \( W \), we **eliminate the need to compute gradients** and perform updates for these large matrices during fine-tuning. This significantly reduces memory usage and computational overhead.
+
+4. **LoRA's Solution:**
+   - Instead of updating \( W \) directly, LoRA introduces two smaller low-rank matrices \( A \) and \( B \), which together represent the update \( \Delta W = A \cdot B \).
+   - Training these smaller matrices is much more memory-efficient because their size is small compared to \( W \).
+
+---
+
+### **Analogy**
+Imagine \( W \) is a massive book that you’ve already written. If you want to make small adjustments to tailor it for a specific audience, instead of rewriting the entire book:
+- You freeze the book’s contents (keep \( W \) fixed).
+- You write an **appendix or a supplement** (the smaller matrices \( A \) and \( B \)) with targeted updates.
+
+This allows you to customize the book for different audiences (tasks) without rewriting or duplicating the entire original book.
+
+---
+
+### **Bottom Line**
+The challenge isn’t loading the pretrained weights but rather training them during fine-tuning. By freezing \( W \) and training only \( A \) and \( B \), LoRA achieves efficient fine-tuning while keeping the memory and computational demands low.
+
+
+
+
+SVD vs LORA
+
+SVD is a linear algebraic tool used for approximating a matrix by retaining the most important components (singular values and corresponding singular vectors). It provides an optimal low-rank approximation of a matrix in terms of minimizing the Frobenius norm (i.e., it minimizes the sum of squared errors between the original matrix and the approximation).
+
+LoRA, on the other hand, introduces low-rank updates during fine-tuning, but not by directly performing SVD. Instead, it approximates the weight updates as a product of low-rank matrices, and this product is learned during fine-tuning (i.e., these matrices are updated through backpropagation based on the task at hand). It's a learned low-rank approximation, not a mathematical one like SVD.
+
+
+
+
+
+
+

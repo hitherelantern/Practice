@@ -1,0 +1,44 @@
+If we don't scale the attention scores(Q @ K), then it can result in peaky SoftMax due to the nature of dot product (for high dimensional vectors)! 
+Which means...there is higher variance of similarity scores(some are very high , some are very low).This can create peaky SoftMax.
+
+But, How exactly does SoftMax being “peaky” make gradients flow to only some values?
+
+output = ∑ αᵢ vᵢ
+L = loss(output)
+
+Then by chain rule:
+∂L/∂vᵢ = ∂L/∂output × ∂output/∂vᵢ
+        = ∂L/∂output × αᵢ  [Note: ∂output/∂vᵢ is just αᵢ × Iₙ (identity matrix)]
+        = αᵢ × ∂L/∂output
+
+
+So if αᵢ ≈ 0, that value vector vᵢ receives no gradient, i.e., no learning.
+That’s why other vᵢ don’t learn — they’re not contributing to the output, and they’re not receiving signal to change.
+That’s why softmax peaking = bad gradient flow ( localized gradient starvation or sparse gradient flow due to peaky attention)
+
+“In peaky attention, a few value vectors (typically one) receive most of the gradient signal, while others get almost nothing — leading to limited or biased learning.”
+
+
+💡 Why does this matter?
+
+If your attention always peaks hard, your model:
+
+* Learns to overfit to some tokens
+
+* Doesn’t explore contextual diversity
+
+* Misses richer interactions between tokens
+
+
+✅ Scaling by √d helps prevent this:
+
+softmax(q · kᵀ / √d)
+
+* The values stay in a moderate range
+
+* Softmax doesn’t saturate
+
+* Attention is spread across more tokens
+
+* Gradients flow more evenly
+

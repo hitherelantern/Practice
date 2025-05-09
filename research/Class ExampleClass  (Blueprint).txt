@@ -1,0 +1,134 @@
+Class: ExampleClass  (Blueprint)
+Memory Address: 0x1A23
+─────────────────────────────────────────────────────────────────
+|   Class Attributes                                           |
+|   ┌──────────────┐      ┌──────────────┐                    |
+|   │ cls_attr1    │ ───▶ │ Address: 0x2B34 │ Value: 10       |
+|   └──────────────┘      └──────────────┘                    |
+|                                                             |
+|   Class Methods                                             |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ cls_method (Address: 0x3C45) (Shared for all instances) │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+
+Instances (Objects)
+─────────────────────────────────────────────────────────────────
+|   Instance 1 (obj1)                                          |
+|   Memory Address: 0x4D56                                     |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ Instance Attributes                                     │
+|   │ ┌──────────────┐      ┌──────────────┐                │ |
+|   │ │ attr1        │ ───▶ │ Address: 0x5E67 │ Value: 20   │ |
+|   │ └──────────────┘      └──────────────┘                │ |
+|   │ Instance Methods                                        │
+|   │ ┌────────────────────────────────────────────────────┐ │
+|   │ │ inst_method (Address: 0x6F78) (Bound to obj1)      │ │
+|   │ └────────────────────────────────────────────────────┘ │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+
+|   Instance 2 (obj2)                                          |
+|   Memory Address: 0x7A89                                     |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ Instance Attributes                                     │
+|   │ ┌──────────────┐      ┌──────────────┐                │ |
+|   │ │ attr1        │ ───▶ │ Address: 0x8B90 │ Value: 30   │ |
+|   │ └──────────────┘      └──────────────┘                │ |
+|   │ Instance Methods                                        │
+|   │ ┌────────────────────────────────────────────────────┐ │
+|   │ │ inst_method (Address: 0x6F78) (Bound to obj2)      │ │
+|   │ └────────────────────────────────────────────────────┘ │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+
+
+
+Certainly! Let's delve into how **class methods/attributes** and **instance methods/attributes** are stored and accessed in memory, referencing memory addresses:
+
+---
+
+### **Logical Structure with Memory Addresses**
+
+```
+Class: ExampleClass  (Blueprint)
+Memory Address: 0x1A23
+─────────────────────────────────────────────────────────────────
+|   Class Attributes                                           |
+|   ┌──────────────┐      ┌──────────────┐                    |
+|   │ cls_attr1    │ ───▶ │ Address: 0x2B34 │ Value: 10       |
+|   └──────────────┘      └──────────────┘                    |
+|                                                             |
+|   Class Methods                                             |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ cls_method (Address: 0x3C45) (Shared for all instances) │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+
+Instances (Objects)
+─────────────────────────────────────────────────────────────────
+|   Instance 1 (obj1)                                          |
+|   Memory Address: 0x4D56                                     |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ Instance Attributes                                     │
+|   │ ┌──────────────┐      ┌──────────────┐                │ |
+|   │ │ attr1        │ ───▶ │ Address: 0x5E67 │ Value: 20   │ |
+|   │ └──────────────┘      └──────────────┘                │ |
+|   │ Instance Methods                                        │
+|   │ ┌────────────────────────────────────────────────────┐ │
+|   │ │ inst_method (Address: 0x6F78) (Bound to obj1)      │ │
+|   │ └────────────────────────────────────────────────────┘ │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+
+|   Instance 2 (obj2)                                          |
+|   Memory Address: 0x7A89                                     |
+|   ┌───────────────────────────────────────────────────────┐ |
+|   │ Instance Attributes                                     │
+|   │ ┌──────────────┐      ┌──────────────┐                │ |
+|   │ │ attr1        │ ───▶ │ Address: 0x8B90 │ Value: 30   │ |
+|   │ └──────────────┘      └──────────────┘                │ |
+|   │ Instance Methods                                        │
+|   │ ┌────────────────────────────────────────────────────┐ │
+|   │ │ inst_method (Address: 0x6F78) (Bound to obj2)      │ │
+|   │ └────────────────────────────────────────────────────┘ │
+|   └───────────────────────────────────────────────────────┘ |
+─────────────────────────────────────────────────────────────────
+```
+
+---
+
+### **Explanation in Terms of Memory Addresses**
+
+1. **Class Level (Shared Memory)**:
+   - The **class itself** (e.g., `ExampleClass`) resides at a specific memory address (e.g., `0x1A23`).
+   - **Class attributes** (e.g., `cls_attr1`) are stored once in memory (e.g., at `0x2B34`), and all instances refer to the same memory address.
+   - **Class methods** (e.g., `cls_method`) are also stored at a single memory address (e.g., `0x3C45`). All instances and the class share this method.
+
+2. **Instance Level (Separate Memory)**:
+   - Each **instance** (e.g., `obj1` and `obj2`) has its own unique memory address (e.g., `0x4D56` and `0x7A89`).
+   - **Instance attributes** are stored separately for each instance. For example:
+     - `obj1.attr1` is at `0x5E67` with a value of `20`.
+     - `obj2.attr1` is at `0x8B90` with a value of `30`.
+   - **Instance methods** point to the same memory address as the class method definition (e.g., `inst_method` at `0x6F78`), but when bound to an instance (e.g., `obj1` or `obj2`), they implicitly pass the `self` argument referring to the instance.
+
+3. **Key Differences in Memory**:
+   - **Class attributes/methods**:
+     - Stored at a single memory address.
+     - Shared among all instances of the class.
+   - **Instance attributes**:
+     - Stored separately for each instance.
+     - Each instance maintains its own memory for its attributes.
+   - **Instance methods**:
+     - The method code resides at a shared memory address.
+     - Binding to an instance allows access to the instance’s memory (e.g., attributes).
+
+---
+
+### **Summary**
+
+- **Class attributes and methods**: Shared memory; all instances reference the same addresses.
+- **Instance attributes**: Unique memory for each instance; independent from other instances.
+- **Instance methods**: Shared memory for the method code but use the instance’s memory when called via `self`.
+
+This structure clarifies how memory is allocated and accessed for class and instance components.

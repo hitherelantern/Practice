@@ -1,0 +1,20 @@
+LLama
+
+<s>[INST] {system_prompt} [/INST] {user_message} [INST] [/INST] {model_answer} </s>
+
+
+Explanation:
+<s>: Beginning-of-sequence token.
+\[INST]: Indicates the start of an instruction or system prompt.
+{system_prompt}: A placeholder for any instructions or context you want the model to follow. For example, you might tell it to be helpful, a translator, or a code generator.
+[/INST]: Indicates the end of the instruction.
+{user_message}: The user's input or question.
+\[INST] {model_answer} [/INST]: (Optional) This part allows you to provide examples of the expected output format. For example, if you want the model to answer in JSON, you could provide an example JSON object here.
+</s>: End-of-sequence token
+
+
+example
+
+<s>[INST] You are a helpful assistant. Your job is to summarize news articles. [/INST]
+News Article: {article_text}
+Summary: [/INST] {model_answer} </s>

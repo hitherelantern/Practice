@@ -1,0 +1,13 @@
+Input:  [The, cat, sat, on, the, mat]
+            ↓
+         Encoder
+            ↓
+Encoder Outputs ─────────┐
+                         │
+Generated so far: [Le, chat]
+            ↓            │
+      Decoder (masked)   │
+            ↓            │
+      Cross-Attention ◄──┘
+            ↓
+   Predict: s'est
