@@ -1,0 +1,47 @@
+The elbow method is a heuristic used to determine the optimal number of clusters (k) for K-means clustering. It involves plotting the within-cluster sum of squares (WCSS) for a range of k values and looking for an "elbow" point on the graph. This "elbow" represents the point where adding more clusters doesn't significantly reduce the WCSS, indicating that the optimal number of clusters has been reached. [1, 2, 3, 4, 5, 6, 7]  
+Here's a more detailed explanation: [7, 8]  
+How it works: [7, 8]  
+
+1. Run K-means for different k values: Perform K-means clustering with a range of values for k (number of clusters), typically starting from 1 and increasing. [6, 7, 8]  
+2. Calculate WCSS: For each k, calculate the within-cluster sum of squares (WCSS). WCSS measures the sum of the squared distances between each data point and its assigned cluster centroid. [3, 5, 6, 9]  
+3. Plot WCSS vs. k: Plot the WCSS values against the corresponding k values. [6]  
+4. Identify the "elbow": Look for the point on the plot where the rate of decrease in WCSS starts to slow down significantly. This point, where the curve bends like an elbow, suggests the optimal number of clusters. [6, 10]  
+
+Why it works: [11]  
+
+• As k increases, the WCSS typically decreases because each data point is closer to its cluster centroid. [11]  
+• However, the rate of decrease slows down after a certain point. Adding more clusters beyond this point provides diminishing returns in terms of reducing the WCSS. [10, 11, 12]  
+• The "elbow" indicates the point where the benefit of adding more clusters becomes minimal, suggesting that the optimal number of clusters has been found. [11]  
+
+In essence, the elbow method helps to find the point where the clustering algorithm starts to over-segment the data, without significantly improving the overall cluster quality. [11]  
+
+Generative AI is experimental.
+
+[1] https://medium.com/@tiami.abiola/clustering-wcss-and-elbow-method-427db8968ba1[2] https://www.kaggle.com/code/hasanaltunay/kmeans-clustering-with-pca[3] https://www.linkedin.com/pulse/unlocking-secrets-k-means-clustering-elbow-method-pratik-shinde-eutcf[4] https://builtin.com/data-science/elbow-method[5] https://medium.com/@zalarushirajsinh07/the-elbow-method-finding-the-optimal-number-of-clusters-d297f5aeb189[6] https://www.linkedin.com/pulse/optimizing-k-means-clustering-guide-using-elbow-method-nandini-verma-qnjuf[7] https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/c71ea970-0f3c-4973-8d3a-b09a7a6553c1.xhtml[8] https://madlib.apache.org/docs/latest/group__grp__kmeans.html[9] https://www.ibm.com/think/topics/k-means-clustering[10] https://www.analyticsvidhya.com/blog/2021/01/in-depth-intuition-of-k-means-clustering-algorithm-in-machine-learning/[11] https://www.geeksforgeeks.org/elbow-method-for-optimal-value-of-k-in-kmeans/[12] https://www.linkedin.com/pulse/unlocking-secrets-k-means-clustering-elbow-method-pratik-shinde-eutcf
+Not all images can be exported from Search.
+
+
+
+
+
+
+
+Silhouette score.....
+
+
+
+
+The silhouette score in K-means clustering is used to evaluate the quality of the clustering results by measuring how well each data point is grouped within its assigned cluster compared to other clusters. It essentially gauges the cohesion of points within a cluster and the separation between clusters. [1, 2, 3, 4]  
+Here's a more detailed explanation: [4]  
+
+• Measuring Cohesion and Separation: The silhouette score considers two aspects: how similar a data point is to other points in its own cluster (cohesion) and how far it is from points in neighboring clusters (separation). [4]  
+• Range and Interpretation: The silhouette score ranges from -1 to 1. A score closer to 1 indicates that a data point is well-clustered within its group, while a score closer to 0 suggests that the data point might be on the boundary between two clusters or even assigned to the wrong cluster. Negative values suggest that a data point might have been incorrectly assigned to a cluster. [1, 4, 5]  
+• Choosing the Optimal Number of Clusters: The average silhouette score can be used to help determine the optimal number of clusters (k) in K-means clustering. By calculating the average silhouette score for different values of k and plotting them, a "best" k value can be identified, where the average silhouette score is highest, indicating well-defined clusters. [6, 7]  
+• Evaluating Cluster Validity: The silhouette score is a useful metric for validating the quality of clusters and understanding how well data points are grouped together. It helps determine if the clusters are well-separated and if data points are assigned to the appropriate clusters. [8, 9]  
+• Interpreting Silhouette Scores: Scores above 0.5 generally suggest good clustering, while scores below 0.25 indicate poor clustering. Scores between 0.25 and 0.5 can be considered fair. [10]  
+
+Generative AI is experimental.
+
+[1] https://www.researchgate.net/publication/325117330_Silhouette_index_for_determining_optimal_k-means_clustering_on_images_in_different_color_models[2] https://dzone.com/articles/kmeans-silhouette-score-explained-with-python-exam[3] https://www.analyticsvidhya.com/blog/2021/05/k-mean-getting-the-optimal-number-of-clusters/[4] https://farshadabdulazeez.medium.com/understanding-silhouette-score-in-clustering-8aedc06ce9c4[5] https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html[6] https://www.geeksforgeeks.org/silhouette-index-cluster-validity-index-set-2/[7] https://medium.com/@nirmalsankalana/k-means-clustering-choosing-optimal-k-process-and-evaluation-methods-2c69377a7ee4[8] https://www.researchgate.net/figure/a-Silhouette-plot-for-clusters-35_fig1_379501389[9] https://medium.com/@hazallgultekin/what-is-silhouette-score-f428fb39bf9a[10] https://www.linkedin.com/advice/0/how-can-you-calculate-silhouette-score-clustering-algorithm-w9bcc
+Not all images can be exported from Search.
+
