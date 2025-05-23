@@ -1,0 +1,18 @@
+---> We create some n number of folder and files (with code) and try to connect all the file
+with each other.
+
+key AWS services for MLOPs Deployment .... cloud
+
+EC2 (VM)
+
+S3 bucket (storage)
+
+ECR (container image registry)
+
+IAM ... A service for securely managing access to AWS resources.
+
+SageMaker... A fully managed service for building, training, and deploying machine learning models.
+
+Code pipeline
+
+AWS Elastic Beanstalk is a PaaS (Platform as a Service) that simplifies the deployment and management of web applications and services on the AWS Cloud
